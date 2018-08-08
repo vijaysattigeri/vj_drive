@@ -1,0 +1,1 @@
+<?php    $vj_target_link='https://stackoverflow.com/questions/2618908/how-to-prevent-a-specific-directory-from-running-php-html-and-javascript-langu';    ?>
