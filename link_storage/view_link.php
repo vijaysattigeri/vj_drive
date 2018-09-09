@@ -19,14 +19,14 @@ if (isset($_SESSION['user_name']) && isset($_SESSION['user_id'])) {
 
     $link_id = $_REQUEST['link_id'];
     $views = $_REQUEST['views'] + 1; //Incrementing view
-    $actula_link = urldecode($_REQUEST['link']); // Previously encoded
+    $decoded_url = trim(rawurldecode($_REQUEST['link'])); // Spaces, tabs and new line characters should be removed else PHP will issue an error.
     $user_name = $_SESSION['user_name'];
     $user_id = $_SESSION['user_id'];
     $qry = "UPDATE `link_data` SET `views` = '$views' WHERE link_id = '$link_id' AND user_id = '$user_id' AND user_name = '$user_name';";
     $res = mysqli_query($con, $qry);
     mysqli_close($con);
     if ($res) {
-        header("location:$actula_link");
+        header("location:$decoded_url");
     } else {
         echo "<h2 style='color:red;'>Unable to increase the view count in MySQL database..... ;-( </h2>";
     }

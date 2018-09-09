@@ -88,10 +88,11 @@ if (isset($_SESSION['user_name']) && isset($_SESSION['user_id'])) {
                         $sl_no = 0;
                         while ($row = mysqli_fetch_array($result)) {
                             $sl_no++;
-                            $actual_link = htmlentities($row['link_txt'], ENT_QUOTES);
+			    $actual_link = $row['link_txt'];
+			    $encoded_url = rawurlencode($actual_link);
                             $link_id = $row['link_id'];
                             $views = $row['views'];
-                            $out_res .= "<tr><td>" . $sl_no . "</td><td><a target='_blank' href = 'view_link.php?link_id=$link_id&views=$views&link=urlencode($actual_link)'>$actual_link</a></td><td>" . htmlentities($row['description'], ENT_QUOTES) . "</td><td>" . $row['added_on'] . "</td><td>" . $views . "</td><td><label style='color:red'><input type='checkbox' name='link_id[]' value='" . $row['link_id'] . "'/>&nbsp;&nbsp;Delete</label></td></tr>";
+                            $out_res .= "<tr><td>" . $sl_no . "</td><td><a target='_blank' href = 'view_link.php?link_id=$link_id&views=$views&link=$encoded_url'>$actual_link</a></td><td>" . htmlentities($row['description'], ENT_QUOTES) . "</td><td>" . $row['added_on'] . "</td><td>" . $views . "</td><td><label style='color:red'><input type='checkbox' name='link_id[]' value='" . $row['link_id'] . "'/>&nbsp;&nbsp;Delete</label></td></tr>";
                         }
                         mysqli_close($con);
                         $out_res .= "</table><br/><br/>";
