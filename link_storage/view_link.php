@@ -19,7 +19,7 @@ if (isset($_SESSION['user_name']) && isset($_SESSION['user_id'])) {
 
     $link_id = $_REQUEST['link_id'];
     $views = $_REQUEST['views'] + 1; //Incrementing view
-    $actula_link = $_REQUEST['link'];
+    $actula_link = urldecode($_REQUEST['link']); // Previously encoded
     $user_name = $_SESSION['user_name'];
     $user_id = $_SESSION['user_id'];
     $qry = "UPDATE `link_data` SET `views` = '$views' WHERE link_id = '$link_id' AND user_id = '$user_id' AND user_name = '$user_name';";
