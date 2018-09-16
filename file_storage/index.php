@@ -30,7 +30,8 @@ if (isset($_SESSION['user_name']) && isset($_SESSION['user_id'])) {
 
 	    <style type="text/css">
                 table { table-layout:fixed; }
-                td { word-wrap:break-word; }
+		td { word-wrap:break-word; }
+		th { word-wrap:break-word; }
             </style>
 
 
