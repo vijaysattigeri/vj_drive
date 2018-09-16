@@ -27,6 +27,13 @@ if (isset($_SESSION['user_name']) && isset($_SESSION['user_id'])) {
                 }
 
             </script>
+
+	    <style type="text/css">
+                table { table-layout:fixed; }
+                td { word-wrap:break-word; }
+            </style>
+
+
         </head>
 
         <body style="padding-top:10px; padding-bottom: 100px;">
